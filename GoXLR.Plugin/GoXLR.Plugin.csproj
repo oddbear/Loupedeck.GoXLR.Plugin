@@ -55,8 +55,8 @@
     <Compile Include="RoutingTreeCommand.cs" />
     <Compile Include="GoXLREventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GoXLR.Application.cs" />
-    <Compile Include="GoXLR.Plugin.cs" />
+    <Compile Include="GoXLRApplication.cs" />
+    <Compile Include="GoXLRPlugin.cs" />
     <Compile Include="RoutingCommand.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -44,7 +44,6 @@ namespace GoXLR.Server.Extensions
                 enumValue = default;
                 return false;
             }
-
         }
 
         public static string[] GetAllEnumDescription<TEnum>()

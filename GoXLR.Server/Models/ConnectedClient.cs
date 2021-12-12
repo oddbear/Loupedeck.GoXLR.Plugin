@@ -1,6 +1,6 @@
 ﻿namespace GoXLR.Server.Models
 {
-    public class ConnectedClient
+    public struct ConnectedClient
     {
         public static ConnectedClient Empty => new ConnectedClient(string.Empty);
 
@@ -10,5 +10,11 @@
         {
             Name = name;
         }
+
+        public static bool operator ==(ConnectedClient left, ConnectedClient right)
+            => left.Equals(right);
+
+        public static bool operator !=(ConnectedClient left, ConnectedClient right)
+            => !left.Equals(right);
     }
 }

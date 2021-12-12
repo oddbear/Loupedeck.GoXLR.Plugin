@@ -18,11 +18,15 @@ namespace Loupedeck.GoXLRPlugin
         public override void Load()
         {
             LoadPluginIcons();
+
             Container = new Container(cfg =>
             {
+                cfg.For<GoXLRPlugin>().Use(this);
                 cfg.For<IGoXLREventHandler>().Use<GoXLREventHandler>().Singleton();
                 cfg.IncludeRegistry<GoXLRServerRegistry>();
             });
+
+            Container.GetInstance<IGoXLREventHandler>().ConnectedClientChangedEvent(ConnectedClient.Empty);
 
             Server = Container.GetInstance<GoXLRServer>();
             Server.Start();

@@ -1,6 +1,6 @@
 ﻿namespace GoXLR.Server.Models
 {
-    public class Profile
+    public struct Profile
     {
         public static Profile Empty => new Profile(string.Empty);
 
@@ -10,5 +10,11 @@
         {
             Name = name;
         }
+
+        public static bool operator ==(Profile left, Profile right)
+            => left.Equals(right);
+
+        public static bool operator !=(Profile left, Profile right)
+            => !left.Equals(right);
     }
 }

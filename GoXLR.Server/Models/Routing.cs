@@ -6,7 +6,7 @@ using GoXLR.Server.Extensions;
 
 namespace GoXLR.Server.Models
 {
-    public class Routing
+    public struct Routing
     {
         public RoutingInput Input { get; set; }
         public RoutingOutput Output { get; set; }
@@ -74,5 +74,11 @@ namespace GoXLR.Server.Models
                 where routing != new Routing(RoutingInput.Samples, RoutingOutput.Sampler)
                 select routing;
         }
+
+        public static bool operator ==(Routing left, Routing right)
+            => left.Equals(right);
+
+        public static bool operator !=(Routing left, Routing right)
+            => !left.Equals(right);
     }
 }
