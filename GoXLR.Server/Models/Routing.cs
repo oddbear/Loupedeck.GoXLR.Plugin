@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GoXLR.Server.Enums;
 using GoXLR.Server.Extensions;
 
 namespace GoXLR.Server.Models
 {
-    public struct Routing
+    public readonly struct Routing
     {
-        public RoutingInput Input { get; set; }
-        public RoutingOutput Output { get; set; }
+        public RoutingInput Input { get; }
+        public RoutingOutput Output { get; }
 
         public Routing(RoutingInput input, RoutingOutput output)
         {
@@ -75,10 +74,10 @@ namespace GoXLR.Server.Models
                 select routing;
         }
 
-        public static bool operator ==(Routing left, Routing right)
+        public static bool operator == (Routing left, Routing right)
             => left.Equals(right);
 
-        public static bool operator !=(Routing left, Routing right)
+        public static bool operator != (Routing left, Routing right)
             => !left.Equals(right);
     }
 }

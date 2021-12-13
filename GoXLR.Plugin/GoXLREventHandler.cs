@@ -1,47 +1,50 @@
 ﻿namespace Loupedeck.GoXLRPlugin
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using Commands;
 
+    using Enums;
+
+    using GoXLR.Server.Enums;
     using GoXLR.Server.Models;
 
     public class GoXLREventHandler : IGoXLREventHandler
     {
         private readonly GoXLRPlugin _plugin;
+        private readonly DynamicActionProvider _actionProvider;
 
-        public GoXLREventHandler(GoXLRPlugin plugin)
+        public GoXLREventHandler(GoXLRPlugin plugin, DynamicActionProvider actionProvider)
         {
             this._plugin = plugin;
+            this._actionProvider = actionProvider;
         }
 
-        public void ConnectedClientChangedEvent(ConnectedClient client)
+        public void ConnectedClientChangedEvent(in ConnectedClient client)
         {
-            if (client == ConnectedClient.Empty)
-            {
-                _plugin.OnPluginStatusChanged(Loupedeck.PluginStatus.Error, "GoXLR App not connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
-            }
-            else
-            {
-                _plugin.OnPluginStatusChanged(Loupedeck.PluginStatus.Normal, "GoXLR App not connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
-            }
+            var pluginState = client == ConnectedClient.Empty
+                ? PluginState.AppNotConnected
+                : PluginState.AppConnected;
+
+            this._plugin.SetPluginState(pluginState);
         }
 
         public void ProfileListChangedEvent(Profile[] profiles)
         {
-            //
+            this._actionProvider.Provide<SetProfileCommand>()
+                .UpdateProfileList(profiles);
         }
 
-        public void ProfileSelectedChangedEvent(Profile profile)
+        public void ProfileSelectedChangedEvent(in Profile profile)
         {
-            //
+            this._actionProvider.Provide<SetProfileCommand>()
+                .UpdateSelectedProfile(profile);
         }
 
-        public void RoutingStateChangedEvent(Routing routing, global::GoXLR.Server.Enums.State state)
+        public void RoutingStateChangedEvent(in Routing routing, in State state)
         {
-            //
+            //How to pass this event?
+            this._actionProvider.Provide<SetRoutingCommand>()
+                .UpdateState(routing, state);
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace GoXLR.Server.Models
         /// <summary>
         /// Notified that a GoXLR App has connected or disconnected.
         /// </summary>
-        void ConnectedClientChangedEvent(ConnectedClient client);
+        void ConnectedClientChangedEvent(in ConnectedClient client);
 
         /// <summary>
         /// Notifies that the list of profiles has been modified in the GoXLR App.
@@ -19,13 +19,13 @@ namespace GoXLR.Server.Models
         /// Notifies that the selected profile has changed in the GoXLR App.
         /// </summary>
         /// <param name="profile"></param>
-        void ProfileSelectedChangedEvent(Profile profile);
+        void ProfileSelectedChangedEvent(in Profile profile);
 
         /// <summary>
         /// Notifies that a specific routing in the routing table of the GoXLR App has changed.
         /// </summary>
         /// <param name="routing"></param>
         /// <param name="state"></param>
-        void RoutingStateChangedEvent(Routing routing, State state);
+        void RoutingStateChangedEvent(in Routing routing, in State state);
     }
 }
