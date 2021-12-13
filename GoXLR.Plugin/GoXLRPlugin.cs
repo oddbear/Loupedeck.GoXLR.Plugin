@@ -12,6 +12,9 @@ namespace Loupedeck.GoXLRPlugin
 
     public class GoXLRPlugin : Plugin
     {
+        public override Boolean UsesApplicationApiOnly => true;
+        public override Boolean HasNoApplication => true;
+
         public IContainer Container { get; private set; }
         public GoXLRServer Server { get; private set; }
 
