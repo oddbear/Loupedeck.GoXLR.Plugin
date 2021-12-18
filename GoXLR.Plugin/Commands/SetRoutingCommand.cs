@@ -96,12 +96,12 @@
             State? state = null;
             if (this._states.TryGetValue(actionParameter, out var tmp))
                 state = tmp;
-
+            
             using (var bitmapBuilder = new BitmapBuilder(imageSize))
             {
-                var background = ImageHelpers.GetRoutingImage(imageSize, routing, state);
+                var background = ImageHelpers.GetRoutingImage2(imageSize, routing, state);
                 bitmapBuilder.SetBackgroundImage(new BitmapImage(background));
-
+                
                 return bitmapBuilder.ToImage();
             }
         }

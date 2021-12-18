@@ -70,15 +70,11 @@
         protected override BitmapImage GetCommandImage(String actionParameter, PluginImageSize imageSize)
         {
             var profileName = GetProfileNameFromActionParameter(actionParameter);
-            var isSelected = this._selected.Name == profileName ? "checked" : "unchecked";
-            var size = imageSize == PluginImageSize.Width90 ? 80 : 50;
+            var isSelected = this._selected.Name == profileName;// ? "checked" : "unchecked";
             using (var bitmapBuilder = new BitmapBuilder(imageSize))
             {
-                var background = EmbeddedResources.ReadImage($"Loupedeck.GoXLRPlugin.Resources.Commands.profile-{isSelected}-{size}.png");
-                bitmapBuilder.SetBackgroundImage(background);
-                
-                bitmapBuilder.Translate(0, 5);
-                bitmapBuilder.DrawText(profileName, fontSize: 13);
+                var background = ImageHelpers.GetProfileImage2(imageSize, profileName, isSelected);
+                bitmapBuilder.SetBackgroundImage(new BitmapImage(background));
 
                 return bitmapBuilder.ToImage();
             }
