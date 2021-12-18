@@ -26,6 +26,10 @@ namespace Loupedeck.GoXLRPlugin
             this.LoadPluginIcons();
             this.SetDefaultPluginState();
 
+            //TODO: Add some sort of configuration (ex. IpAddress for remote)
+            //TODO: Set status images (ex. not connected)
+            //TODO: Create better images.
+
             this.Container = new Container(cfg =>
             {
                 cfg.For<GoXLRPlugin>().Use(this);
@@ -37,9 +41,8 @@ namespace Loupedeck.GoXLRPlugin
             this.Server.Start();
         }
 
-        public override void Unload()
-        {
-        }
+        public override void Unload() =>
+            this.Server?.Dispose();
 
         private void OnApplicationStarted(Object sender, EventArgs e)
         {
@@ -93,7 +96,7 @@ namespace Loupedeck.GoXLRPlugin
                     base.OnPluginStatusChanged(Loupedeck.PluginStatus.Normal, "GoXLR App is connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
                     break;
                 case PluginState.AppNotConnected:
-                    base.OnPluginStatusChanged(Loupedeck.PluginStatus.Error, "GoXLR App is not connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
+                    base.OnPluginStatusChanged(Loupedeck.PluginStatus.Warning, "GoXLR App is not connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
                     break;
                 case PluginState.PortInUse:
                     base.OnPluginStatusChanged(Loupedeck.PluginStatus.Error, "Port 6805 is already in use.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");

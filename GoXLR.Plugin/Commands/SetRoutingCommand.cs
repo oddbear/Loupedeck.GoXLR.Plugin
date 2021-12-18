@@ -47,7 +47,7 @@
         {
             if (!Routing.TryParseContext(actionParameter, out var routing))
                 return;
-
+            
             var server = this._plugin.Server;
             server.SetRouting(RoutingAction.Toggle, routing, CancellationToken.None)
                 .GetAwaiter()
@@ -87,16 +87,20 @@
         
         protected override BitmapImage GetCommandImage(String actionParameter, PluginImageSize imageSize)
         {
+            if (String.IsNullOrWhiteSpace(actionParameter))
+                return null;
+
+            if (!Routing.TryParseContext(actionParameter, out var routing))
+                return null;
+
+            State? state = null;
+            if (this._states.TryGetValue(actionParameter, out var tmp))
+                state = tmp;
+
             using (var bitmapBuilder = new BitmapBuilder(imageSize))
             {
-                var background = ImageHelpers.GetImageBackground(imageSize, Color.Red);
-                var bitmapImage = new BitmapImage(background);
-                bitmapBuilder.SetBackgroundImage(bitmapImage);
-
-                //base: Routing Toggle
-                //this: Input|Output\r\n- -> Input|Output\r\nOn
-                var text = this.GetCommandDisplayName(actionParameter, imageSize);
-                bitmapBuilder.DrawText(text);
+                var background = ImageHelpers.GetRoutingImage(imageSize, routing, state);
+                bitmapBuilder.SetBackgroundImage(new BitmapImage(background));
 
                 return bitmapBuilder.ToImage();
             }

@@ -69,14 +69,16 @@
 
         protected override BitmapImage GetCommandImage(String actionParameter, PluginImageSize imageSize)
         {
+            var profileName = GetProfileNameFromActionParameter(actionParameter);
+            var isSelected = this._selected.Name == profileName ? "checked" : "unchecked";
+            var size = imageSize == PluginImageSize.Width90 ? 80 : 50;
             using (var bitmapBuilder = new BitmapBuilder(imageSize))
             {
-                var background = ImageHelpers.GetImageBackground(imageSize, Color.Red);
-                var bitmapImage = new BitmapImage(background);
-                bitmapBuilder.SetBackgroundImage(bitmapImage);
+                var background = EmbeddedResources.ReadImage($"Loupedeck.GoXLRPlugin.Resources.Commands.profile-{isSelected}-{size}.png");
+                bitmapBuilder.SetBackgroundImage(background);
                 
-                var text = this.GetCommandDisplayName(actionParameter, imageSize);
-                bitmapBuilder.DrawText(text);
+                bitmapBuilder.Translate(0, 5);
+                bitmapBuilder.DrawText(profileName, fontSize: 13);
 
                 return bitmapBuilder.ToImage();
             }
@@ -87,6 +89,18 @@
             if (actionParameter is null)
                 return String.Empty;
 
+            var text = GetProfileNameFromActionParameter(actionParameter);
+
+            return text == this._selected.Name
+                ? $"[{text}]"
+                : text;
+        }
+
+        private static String GetProfileNameFromActionParameter(String actionParameter)
+        {
+            if (String.IsNullOrWhiteSpace(actionParameter))
+                return String.Empty;
+
             var text = actionParameter;
             if (actionParameter.IndexOf('|') != -1)
             {
@@ -94,9 +108,7 @@
                 text = split[1];
             }
 
-            return text == this._selected.Name
-                ? $"[{text}]"
-                : text;
+            return text;
         }
     }
 }

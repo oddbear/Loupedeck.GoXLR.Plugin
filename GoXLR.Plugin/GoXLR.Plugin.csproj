@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>C:\Users\oddbj\AppData\Local\Loupedeck\Plugins</OutputPath>
+    <OutputPath>..\..\..\..\AppData\Local\Loupedeck\Plugins\GoXLR.Plugin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -82,6 +82,11 @@
     <EmbeddedResource Include="Resources\Icons\Icon-32.png" />
     <EmbeddedResource Include="Resources\Icons\Icon-48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Commands\profile-checked-50.png" />
+    <EmbeddedResource Include="Resources\Commands\profile-checked-80.png" />
+    <EmbeddedResource Include="Resources\Commands\profile-unchecked-50.png" />
+    <EmbeddedResource Include="Resources\Commands\profile-unchecked-80.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
