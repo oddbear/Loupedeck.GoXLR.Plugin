@@ -1,20 +1,21 @@
-﻿using GoXLR.Server.Models;
-using System.Text.Json;
-
-namespace GoXLR.Server.Handlers.Commands
+﻿namespace GoXLR.Server.Handlers.Commands
 {
+    using GoXLR.Server.Models;
+
+    using Newtonsoft.Json;
+
     internal class SubscribeToProfileStateCommand : CommandBase
     {
         public SubscribeToProfileStateCommand(Profile profile)
         {
             //It's required to send a propertyInspectorDidAppear at least once, not sure why.
-            var propertyInspectorDidAppear = JsonSerializer.Serialize(new
+            var propertyInspectorDidAppear = JsonConvert.SerializeObject(new
             {
                 action = "com.tchelicon.goxlr.profilechange",
                 context = profile.Name,
                 @event = "propertyInspectorDidAppear"
             });
-            var willAppear = JsonSerializer.Serialize(new
+            var willAppear = JsonConvert.SerializeObject(new
             {
                 action = "com.tchelicon.goxlr.profilechange",
                 context = profile.Name,

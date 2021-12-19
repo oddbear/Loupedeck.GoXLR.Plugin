@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Fleck;
@@ -12,6 +11,8 @@ using GoXLR.Server.Models;
 namespace GoXLR.Server
 {
     using System.Diagnostics;
+
+    using Newtonsoft.Json;
 
     using StructureMap;
 
@@ -103,13 +104,8 @@ namespace GoXLR.Server
 
                     if (string.IsNullOrWhiteSpace(message))
                         return;
-
-                    var jsonSerializerOptions = new JsonSerializerOptions
-                    {
-                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                    };
-
-                    var notification = JsonSerializer.Deserialize<MessageNotification>(message, jsonSerializerOptions);
+                    
+                    var notification = JsonConvert.DeserializeObject<MessageNotification>(message);
                     if (notification is null)
                         return;
 

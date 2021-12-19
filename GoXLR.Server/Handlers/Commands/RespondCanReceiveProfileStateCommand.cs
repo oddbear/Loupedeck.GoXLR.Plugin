@@ -1,12 +1,12 @@
-﻿using System.Text.Json;
-
-namespace GoXLR.Server.Handlers.Commands
+﻿namespace GoXLR.Server.Handlers.Commands
 {
+    using Newtonsoft.Json;
+
     internal class RespondCanReceiveProfileStateCommand : CommandBase
     {
         public RespondCanReceiveProfileStateCommand(string profileName)
         {
-            var json = JsonSerializer.Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 action = "com.tchelicon.goxlr.profilechange",
                 context = profileName,

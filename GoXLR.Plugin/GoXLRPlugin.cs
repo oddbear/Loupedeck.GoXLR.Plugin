@@ -25,11 +25,7 @@ namespace Loupedeck.GoXLRPlugin
         {
             this.LoadPluginIcons();
             this.SetDefaultPluginState();
-
-            //TODO: Add some sort of configuration (ex. IpAddress for remote)
-            //TODO: Set status images (ex. not connected)
-            //TODO: Create better images.
-
+            
             this.Container = new Container(cfg =>
             {
                 cfg.For<GoXLRPlugin>().Use(this);

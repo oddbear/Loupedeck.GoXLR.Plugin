@@ -1,15 +1,16 @@
-﻿using GoXLR.Server.Enums;
-using GoXLR.Server.Extensions;
-using GoXLR.Server.Models;
-using System.Text.Json;
-
-namespace GoXLR.Server.Handlers.Commands
+﻿namespace GoXLR.Server.Handlers.Commands
 {
+    using Enums;
+    using Extensions;
+    using GoXLR.Server.Models;
+
+    using Newtonsoft.Json;
+
     internal class RespondCanReceiveRoutingStateCommand : CommandBase
     {
         public RespondCanReceiveRoutingStateCommand(string context, Routing routing)
         {
-            var json = JsonSerializer.Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 action = "com.tchelicon.goxlr.routingtable",
                 context = context,

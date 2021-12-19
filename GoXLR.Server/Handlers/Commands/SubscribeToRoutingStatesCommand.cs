@@ -1,9 +1,9 @@
-﻿using GoXLR.Server.Models;
-using System.Linq;
-using System.Text.Json;
-
-namespace GoXLR.Server.Handlers.Commands
+﻿namespace GoXLR.Server.Handlers.Commands
 {
+    using GoXLR.Server.Models;
+    using System.Linq;
+    using Newtonsoft.Json;
+
     internal class SubscribeToRoutingStatesCommand : CommandBase
     {
         public SubscribeToRoutingStatesCommand()
@@ -12,7 +12,7 @@ namespace GoXLR.Server.Handlers.Commands
             //We can register subscription to all possible routing combinations, as this is fixed.
             //We cannot do this for profiles yet, as this is a list that might change.
             //Therefor we need to do this after we have requested the list of the profiles.
-            var json = JsonSerializer.Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 @event = "goxlrConnectionEvent",
                 payload = Routing.GetRoutingTable()

@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-
-namespace GoXLR.Server.Handlers.Commands
+﻿namespace GoXLR.Server.Handlers.Commands
 {
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Fetching profiles from the selected GoXLR App.
     /// </summary>
@@ -9,7 +9,7 @@ namespace GoXLR.Server.Handlers.Commands
     {
         public RequestProfilesCommand()
         {
-            var json = JsonSerializer.Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 action = "com.tchelicon.goxlr.profilechange",
                 context = "fetchingProfiles",
