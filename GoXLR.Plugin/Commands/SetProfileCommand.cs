@@ -41,8 +41,8 @@
 
             if (this._selected != prevProfile)
             {
-                var profileName = profile.Name;
-                this.ActionImageChanged($"profile|{profileName}");
+                this.ActionImageChanged($"profile|{prevProfile.Name}");
+                this.ActionImageChanged($"profile|{profile.Name}");
             }
         }
 
@@ -74,7 +74,7 @@
             using (var bitmapBuilder = new BitmapBuilder(imageSize))
             {
                 var background = ImageHelpers.GetProfileImage2(imageSize, profileName, isSelected);
-                bitmapBuilder.SetBackgroundImage(new BitmapImage(background));
+                bitmapBuilder.SetBackgroundImage(BitmapImage.FromArray(background));
 
                 return bitmapBuilder.ToImage();
             }

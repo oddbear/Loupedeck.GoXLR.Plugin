@@ -100,7 +100,7 @@
             using (var bitmapBuilder = new BitmapBuilder(imageSize))
             {
                 var background = ImageHelpers.GetRoutingImage2(imageSize, routing, state);
-                bitmapBuilder.SetBackgroundImage(new BitmapImage(background));
+                bitmapBuilder.SetBackgroundImage(BitmapImage.FromArray(background));
                 
                 return bitmapBuilder.ToImage();
             }
