@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,21 +7,21 @@
     <ProjectGuid>{14015169-5E24-467D-9DD0-A594101FC9D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Loupedeck.GoXLRPlugin</RootNamespace>
+    <RootNamespace>Loupedeck.GoXLR.Plugin</RootNamespace>
     <AssemblyName>GoXLRPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup>
-    <BaseIntermediateOutputPath>$(SolutionDir)..\obj\</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(SolutionDir)..\bin\</BaseOutputPath>
-    <OutputPath>$(BaseOutputPath)$(Configuration)\</OutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)\obj\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(SolutionDir)\bin\</BaseOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\AppData\Local\Loupedeck\Plugins\GoXLRPlugin\</OutputPath>
+    <OutputPath Condition="$(OS) == 'Windows_NT'">$(LocalAppData)\Loupedeck\Plugins\GoXLR\win\</OutputPath>
+    <OutputPath Condition="$(OS) != 'Windows_NT'">$(HOME)/.local/share/Loupedeck/Plugins/GoXLR/mac/</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,22 +29,70 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <OutputPath Condition="$(OS) == 'Windows_NT'">$(BaseOutputPath)$(Configuration)\win\</OutputPath>
+    <OutputPath Condition="$(OS) != 'Windows_NT'">$(BaseOutputPath)$(Configuration)/mac/</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <OutputPath>..\..\bin\GoXLR\bin\win\</OutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files %28x86%29\Loupedeck\Loupedeck2\Loupedeck2.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files %28x86%29\Loupedeck\Loupedeck2\Loupedeck2.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>/Applications/Loupedeck.app</StartProgram>
+  </PropertyGroup>
+  
   <ItemGroup>
+    <Reference Include="Fleck, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.1.2.0\lib\net45\Fleck.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files (x86)\Loupedeck\Loupedeck2\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PluginApi, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Loupedeck\Loupedeck2\PluginApi.dll</HintPath>
+      <HintPath Condition="$(OS) == 'Windows_NT'">C:\Program Files (x86)\Loupedeck\Loupedeck2\PluginApi.dll</HintPath>
+      <HintPath Condition="$(OS) != 'Windows_NT'">/Applications/Loupedeck.app/Contents/MonoBundle/PluginApi.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StructureMap.4.7.1\lib\net45\StructureMap.dll</HintPath>
+    <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.2.88.3\lib\net462\SkiaSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,37 +102,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SetProfileCommand.cs" />
-    <Compile Include="DynamicActionProvider.cs" />
+    <Compile Include="Actions\Dynamic Folder\Base Dynamic Folder\BaseProfileFolder.cs" />
+    <Compile Include="Actions\Dynamic Folder\Base Dynamic Folder\BaseRoutingTable.cs" />
+    <Compile Include="Actions\Dynamic Folder\ProfileFolder.cs" />
+    <Compile Include="Actions\Dynamic Folder\RoutingTable.cs" />
+    <Compile Include="Actions\SetProfile.cs" />
+    <Compile Include="Actions\SetRouting.cs" />
+    <Compile Include="Config\GoXLRConfig.cs" />
+    <Compile Include="Config\Models\BaseProfileSettings.cs" />
+    <Compile Include="Config\Models\RoutingFolderSettings.cs" />
+    <Compile Include="Config\Models\PluginSettings.cs" />
+    <Compile Include="Config\Models\RoutingSettings.cs" />
     <Compile Include="Enums\PluginState.cs" />
-    <Compile Include="Commands\SetRoutingCommand.cs" />
-    <Compile Include="GoXLREventHandler.cs" />
-    <Compile Include="Helpers\ImageHelpers.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GoXLRApplication.cs" />
     <Compile Include="GoXLRPlugin.cs" />
+    <Compile Include="GoXLR\CommandHandler.cs" />
+    <Compile Include="GoXLR\Commands\CommandBase.cs" />
+    <Compile Include="GoXLR\Commands\GetProfiles.cs" />
+    <Compile Include="GoXLR\Commands\RespondCanReceiveProfile.cs" />
+    <Compile Include="GoXLR\Commands\RespondCanReceiveRouting.cs" />
+    <Compile Include="GoXLR\Commands\SetProfile.cs" />
+    <Compile Include="GoXLR\Commands\SetRouting.cs" />
+    <Compile Include="GoXLR\Commands\SubscribeToProfiles.cs" />
+    <Compile Include="GoXLR\Commands\SubscribeToRouting.cs" />
+    <Compile Include="GoXLR\Commands\UnsubscribeToProfiles.cs" />
+    <Compile Include="GoXLR\Enums\RoutingAction.cs" />
+    <Compile Include="GoXLR\Enums\RoutingInput.cs" />
+    <Compile Include="GoXLR\Enums\RoutingOutput.cs" />
+    <Compile Include="GoXLR\Enums\State.cs" />
+    <Compile Include="GoXLR\EventArgs\OnProfilesChangedEventArgs.cs" />
+    <Compile Include="GoXLR\EventArgs\OnProfileSelectedEventArgs.cs" />
+    <Compile Include="GoXLR\EventArgs\OnRoutingChangedEventArgs.cs" />
+    <Compile Include="GoXLR\EventHandler.cs" />
+    <Compile Include="GoXLR\Extensions\EnumExtension.cs" />
+    <Compile Include="GoXLR\MessageHandler.cs" />
+    <Compile Include="GoXLR\Models\NotificationMessage.cs" />
+    <Compile Include="GoXLR\Models\Profile.cs" />
+    <Compile Include="GoXLR\Models\Routing.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="PluginConfiguration.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <None Include="metadata\LoupedeckPackage.yaml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoXLR.Server\GoXLR.Server.csproj">
-      <Project>{24167041-f4c1-4b4a-82fb-3c33b07c5601}</Project>
-      <Name>GoXLR.Server</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Icons\Icon-16.png" />
-    <EmbeddedResource Include="Resources\Icons\Icon-256.png" />
-    <EmbeddedResource Include="Resources\Icons\Icon-32.png" />
-    <EmbeddedResource Include="Resources\Icons\Icon-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Commands\checked-80.png" />
+    <EmbeddedResource Include="metadata\Icon16x16.png" />
+    <EmbeddedResource Include="metadata\Icon256x256.png" />
+    <EmbeddedResource Include="metadata\Icon32x32.png" />
+    <EmbeddedResource Include="metadata\Icon48x48.png" />
+    <EmbeddedResource Include="EmbeddedResources\Background.png" />
+    <EmbeddedResource Include="EmbeddedResources\PluginSettings.json" />
+    <EmbeddedResource Include="EmbeddedResources\ProfileLock.png" />
+    <EmbeddedResource Include="EmbeddedResources\UserProfile.png" />
+    <EmbeddedResource Include="EmbeddedResources\VolumeMain.png" />
+    <EmbeddedResource Include="EmbeddedResources\VolumeMuteMain.png" />
+    <EmbeddedResource Include="EmbeddedResources\VolumeMutePurple.png" />
+    <EmbeddedResource Include="EmbeddedResources\VolumePurple.png" />
+    <Content Include="GoXLR\Models\Commands.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent Condition="$(OS) == 'Windows_NT'">call "$(ProjectDir)BuildEvents\postbuild.cmd" "$(ProjectDir)" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent Condition="$(OS) != 'Windows_NT'">sh "$(ProjectDir)BuildEvents\postbuild" "$(ProjectDir)" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.2.88.3\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
+  </Target>
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.3\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
 </Project>

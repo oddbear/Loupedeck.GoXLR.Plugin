@@ -1,0 +1,41 @@
+{
+  "IconNote": "IMPORTANT: Replace every backslash with a normal one, otherwise default settings will be used (Example: C:/.../.../.../). Icons needs to be as 72px x 72px to work properly, should be full path",
+  "ColorNote" : "IMPORTANT: Colors needs to have the Hex-Color format (#123456) to work properly | Empty for default",
+  "Routing": {
+    "ActiveIconPath": "",
+    "InActiveIconPath": "",
+    "FontColor": "",
+    "ActiveRoutingColor": "",
+    "InActiveRoutingColor": "",
+    "SecondaryColor": "",
+    "BackgroundColor": "",
+    "NotAvailable": ""
+  },
+  "Profile": {
+    "SelectedIconPath": "",
+    "NotSelectedIconPath": "",
+    "FontColor": "",
+    "SelectedProfileColor": "",
+    "NotSelectedProfileColor": "",
+    "BackgroundColor": "",
+    "NotAvailable": ""
+  },
+  "RoutingFolder": {
+    "ActiveIconPath": "",
+    "InActiveIconPath": "",
+    "FontColor": "",
+    "ActiveRoutingColor": "",
+    "InActiveRoutingColor": "",
+    "BackgroundColor": "",
+    "NotAvailable": ""
+  },
+  "ProfileFolder": {
+    "SelectedIconPath": "",
+    "NotSelectedIconPath": "",
+    "FontColor": "",
+    "SelectedProfileColor": "",
+    "NotSelectedProfileColor": "",
+    "BackgroundColor": "",
+    "NotAvailable": ""
+  }
+}

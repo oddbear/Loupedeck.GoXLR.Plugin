@@ -1,0 +1,234 @@
+﻿{
+  "action": "com.tchelicon.goxlr.profilechange",
+  "context": "fetchingProfiles",
+  "event": "propertyInspectorDidAppear"
+} 
+RequestProfiles
+
+{
+  "action": "com.tchelicon.goxlr.routingtable",
+  "context": "Context",
+  "event": "didReceiveSettings",
+  "payload": {
+    "settings": {
+      "RoutingAction": "Toggle",
+      "RoutingInput": "Mic",
+      "RoutingOutput": "Headphones"
+    }
+  }
+}
+RespondCanReceiveRouting
+
+{
+  "action": "com.tchelicon.goxlr.profilechange",
+  "context": "MainTwo",
+  "event": "didReceiveSettings",
+  "payload": {
+    "settings": {
+      "SelectedProfile": "MainTwo"
+    }
+  }
+}
+RespondCanReceiveProfile
+
+{
+  "action": "com.tchelicon.goxlr.profilechange",
+  "event": "keyUp",
+  "payload": {
+    "settings": {
+      "SelectedProfile": "MainTwo"
+    }
+  }
+}
+SetProfile
+
+{
+  "action": "com.tchelicon.goxlr.routingtable",
+  "event": "keyUp",
+  "payload": {
+    "settings": {
+      "RoutingAction": "Toggle",
+      "RoutingInput": "Mic",
+      "RoutingOutput": "Chat Mic"
+    }
+  }
+}
+SetRouting
+
+{
+  "action": "com.tchelicon.goxlr.profilechange",
+  "context": "MainTwo",
+  "event": "propertyInspectorDidAppear"
+}
+{
+  "action": "com.tchelicon.goxlr.profilechange",
+  "context": "MainTwo",
+  "event": "willAppear"
+}
+Sub Profile
+
+{
+  "action": "com.tchelicon.goxlr.profilechange",
+  "context": "MainTwo",
+  "event": "willDisappear"
+}
+UnSub Profile
+
+SubRouting
+{
+  "event": "goxlrConnectionEvent",
+  "payload": [
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Mic|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Mic|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routin\ngtable",
+      "context": "Mic|LineOut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Mic|ChatMic"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Mic|Sampler"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Chat|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Chat|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Chat|LineOut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Chat|S\nampler"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Music|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Music|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Music|LineO\nut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Music|ChatMic"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Music|Sampler"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Game|Headphones"
+    },
+    {
+      "act\nion": "com.tchelicon.goxlr.routingtable",
+      "context": "Game|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Game|LineOut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Game|ChatMic"
+    },
+    {
+      "action": "com.\ntchelicon.goxlr.routingtable",
+      "context": "Game|Sampler"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Console|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Console|BroadcastMix"
+    },
+    {
+      "action": "com.t\nchelicon.goxlr.routingtable",
+      "context": "Console|LineOut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Console|ChatMic"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Console|Sampler"
+    },
+    {
+      "action": "com.tchelic\non.goxlr.routingtable",
+      "context": "LineIn|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "LineIn|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "LineIn|LineOut"
+    },
+    {
+      "action": "com.tchelico\nn.goxlr.routingtable",
+      "context": "LineIn|ChatMic"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "LineIn|Sampler"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "System|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxl\nr.routingtable",
+      "context": "System|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "System|LineOut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "System|ChatMic"
+    },
+    {
+      "action": "com.tchelicon.goxlr.ro\nutingtable",
+      "context": "System|Sampler"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Samples|Headphones"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Samples|BroadcastMix"
+    },
+    {
+      "action": "com.tchelicon.goxlr.r\noutingtable",
+      "context": "Samples|LineOut"
+    },
+    {
+      "action": "com.tchelicon.goxlr.routingtable",
+      "context": "Samples|ChatMic"
+    }
+  ]
+}

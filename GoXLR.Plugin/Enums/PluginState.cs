@@ -1,9 +1,9 @@
-﻿namespace Loupedeck.GoXLRPlugin.Enums
+﻿namespace Loupedeck.GoXLR.Plugin.Enums
 {
     public enum PluginState
     {
-        AppNotConnected,
-        PortInUse,
-        AppConnected
+        Connected,
+        NotConnected,
+        PortInUse
     }
 }
