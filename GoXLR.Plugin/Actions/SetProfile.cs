@@ -28,6 +28,11 @@ namespace Loupedeck.GoXLR.Plugin.Actions
             ActionEditor.ListboxItemsRequested += OnProfilesChanged;
         }
 
+        /// <summary>
+        /// Add the Items to the List
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void OnProfilesChanged(object sender, ActionEditorListboxItemsRequestedEventArgs e)
         {
             if (!e.ControlName.EqualsNoCase(ProfileControlName)) return;

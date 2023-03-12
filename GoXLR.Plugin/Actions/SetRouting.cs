@@ -22,7 +22,6 @@ namespace Loupedeck.GoXLR.Plugin.Actions
         {
             DisplayName = "Routing Table";
             Description = "Edit the Routing Table of your GoXLR-Device";
-            GroupName = "";
 
             AddState("Active", "The routing that is currently active");
             AddState("Not Active", "The routing that isn't currently active");
@@ -34,6 +33,12 @@ namespace Loupedeck.GoXLR.Plugin.Actions
             ActionEditor.ControlValueChanged += OnControlValueChanged;
         }
 
+        /// <summary>
+        /// Once a value of a list changes, this will be called to refresh the other list
+        /// to avoid not allowed routing.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnControlValueChanged(object sender, ActionEditorControlValueChangedEventArgs e)
         {
             if (e.ControlName.EqualsNoCase(InputDevice))
@@ -46,6 +51,11 @@ namespace Loupedeck.GoXLR.Plugin.Actions
             }
         }
 
+        /// <summary>
+        /// This Methode adds the Values to the Listboxes and checks that the Input is valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRoutingChanged(object sender, ActionEditorListboxItemsRequestedEventArgs e)
         {
             if (e.ControlName.EqualsNoCase(InputDevice))
@@ -55,8 +65,6 @@ namespace Loupedeck.GoXLR.Plugin.Actions
 
                 foreach (var input in inputOptions)
                 {
-                    var s = !selectedOutput.IsNullOrEmpty();
-                    var t = !Routing.IsValid(input, selectedOutput);
                     if (!selectedOutput.IsNullOrEmpty() && !Routing.IsValid(input, selectedOutput)) continue;
 
                     e.AddItem(input, input, "");
@@ -199,6 +207,12 @@ namespace Loupedeck.GoXLR.Plugin.Actions
             ActionImageChanged();
         }
 
+        /// <summary>
+        /// Convert the ActionParameters returned by the Plugin and convert it to
+        /// the old RoutingString style for parsing.
+        /// </summary>
+        /// <param name="actionParameters"></param>
+        /// <returns></returns>
         private string GetRoutingString(ActionEditorActionParameters actionParameters)
         {
             return $"{actionParameters.Parameters[InputDevice]}|{actionParameters.Parameters[OutputDevice]}|{actionParameters.Parameters[Mode]}";
