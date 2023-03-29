@@ -1,4 +1,4 @@
-namespace Loupedeck.GoXLRPlugin
+namespace Loupedeck.GoXLR.Plugin
 {
     // This class can be used to connect the Loupedeck plugin to an application.
     public class GoXlrApplication : ClientApplication

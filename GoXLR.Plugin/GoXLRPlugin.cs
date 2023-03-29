@@ -10,6 +10,7 @@ using Loupedeck.GoXLR.Plugin.GoXLR;
 using Loupedeck.GoXLR.Plugin.GoXLR.Enums;
 using Loupedeck.GoXLR.Plugin.GoXLR.EventArgs;
 using Loupedeck.GoXLR.Plugin.GoXLR.Models;
+using Loupedeck.GoXLR.Plugin.Helpers;
 using EventHandler = Loupedeck.GoXLR.Plugin.GoXLR.EventHandler;
 
 namespace Loupedeck.GoXLR.Plugin
@@ -25,7 +26,7 @@ namespace Loupedeck.GoXLR.Plugin
         protected internal static Profile ActiveProfile = new Profile();
         protected internal static readonly Dictionary<string, State?> RoutingStates = new Dictionary<string, State?>();
 
-        public static readonly PluginLogFile Logger = new PluginLogFile("GoXLR");
+        public GoXlrPlugin() => PluginLog.Init(Log);
         public override bool UsesApplicationApiOnly => true;
         public override bool HasNoApplication => true;
 
