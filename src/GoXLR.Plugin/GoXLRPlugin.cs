@@ -14,8 +14,8 @@ namespace Loupedeck.GoXLRPlugin
     
     public class GoXLRPlugin : Plugin
     {
-        public override Boolean UsesApplicationApiOnly => true;
-        public override Boolean HasNoApplication => true;
+        public override bool UsesApplicationApiOnly => true;
+        public override bool HasNoApplication => true;
 
         public IContainer Container { get; private set; }
         public GoXLRServer Server { get; private set; }
@@ -40,19 +40,19 @@ namespace Loupedeck.GoXLRPlugin
         public override void Unload() =>
             this.Server?.Dispose();
 
-        private void OnApplicationStarted(Object sender, EventArgs e)
+        private void OnApplicationStarted(object sender, EventArgs e)
         {
         }
 
-        private void OnApplicationStopped(Object sender, EventArgs e)
+        private void OnApplicationStopped(object sender, EventArgs e)
         {
         }
 
-        public override void RunCommand(String commandName, String parameter)
+        public override void RunCommand(string commandName, string parameter)
         {
         }
 
-        public override void ApplyAdjustment(String adjustmentName, String parameter, Int32 diff)
+        public override void ApplyAdjustment(string adjustmentName, string parameter, int diff)
         {
         }
 
@@ -89,13 +89,25 @@ namespace Loupedeck.GoXLRPlugin
             switch (state)
             {
                 case PluginState.AppConnected:
-                    base.OnPluginStatusChanged(Loupedeck.PluginStatus.Normal, "GoXLR App is connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
+                    base.OnPluginStatusChanged(
+                        Loupedeck.PluginStatus.Normal,
+                        "GoXLR App is connected.",
+                        "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/",
+                        "GoXLR Plugin Support");
                     break;
                 case PluginState.AppNotConnected:
-                    base.OnPluginStatusChanged(Loupedeck.PluginStatus.Warning, "GoXLR App is not connected.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
+                    base.OnPluginStatusChanged(
+                        Loupedeck.PluginStatus.Warning,
+                        "GoXLR App is not connected.",
+                        "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/",
+                        "GoXLR Plugin Support");
                     break;
                 case PluginState.PortInUse:
-                    base.OnPluginStatusChanged(Loupedeck.PluginStatus.Error, "Port 6805 is already in use.", "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/");
+                    base.OnPluginStatusChanged(
+                        Loupedeck.PluginStatus.Error,
+                        "Port 6805 is already in use.",
+                        "https://github.com/oddbear/Loupedeck.GoXLR.Plugin/",
+                        "GoXLR Plugin Support");
                     break;
             }
         }

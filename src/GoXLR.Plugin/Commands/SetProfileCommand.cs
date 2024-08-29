@@ -25,7 +25,7 @@
             this.MakeProfileAction("list;Profile:");
         }
 
-        protected override Boolean OnLoad()
+        protected override bool OnLoad()
         {
             this._plugin = (GoXLRPlugin)base.Plugin;
             return true;
@@ -46,7 +46,7 @@
             }
         }
 
-        protected override void RunCommand(String actionParameter)
+        protected override void RunCommand(string actionParameter)
         {
             if (actionParameter.IndexOf('|') == -1)
                 return;
@@ -64,10 +64,10 @@
         protected override PluginActionParameter[] GetParameters() =>
             this._profiles
                 .Select(profile => profile.Name)
-                .Select(profileName => new PluginActionParameter($"profile|{profileName}", profileName, String.Empty))
+                .Select(profileName => new PluginActionParameter($"profile|{profileName}", profileName, string.Empty))
                 .ToArray();
 
-        protected override BitmapImage GetCommandImage(String actionParameter, PluginImageSize imageSize)
+        protected override BitmapImage GetCommandImage(string actionParameter, PluginImageSize imageSize)
         {
             var profileName = GetProfileNameFromActionParameter(actionParameter);
             var isSelected = this._selected.Name == profileName;// ? "checked" : "unchecked";
@@ -80,10 +80,10 @@
             }
         }
 
-        protected override String GetCommandDisplayName(String actionParameter, PluginImageSize imageSize)
+        protected override string GetCommandDisplayName(string actionParameter, PluginImageSize imageSize)
         {
             if (actionParameter is null)
-                return String.Empty;
+                return string.Empty;
 
             var text = GetProfileNameFromActionParameter(actionParameter);
 
@@ -92,10 +92,10 @@
                 : text;
         }
 
-        private static String GetProfileNameFromActionParameter(String actionParameter)
+        private static string GetProfileNameFromActionParameter(string actionParameter)
         {
-            if (String.IsNullOrWhiteSpace(actionParameter))
-                return String.Empty;
+            if (string.IsNullOrWhiteSpace(actionParameter))
+                return string.Empty;
 
             var text = actionParameter;
             if (actionParameter.IndexOf('|') != -1)

@@ -13,7 +13,7 @@
 
     class SetRoutingCommand : PluginDynamicCommand
     {
-        private readonly Dictionary<String, State> _states = new Dictionary<String, State>();
+        private readonly Dictionary<string, State> _states = new Dictionary<string, State>();
 
         private GoXLRPlugin _plugin;
 
@@ -26,7 +26,7 @@
             this.MakeProfileAction("tree");
         }
 
-        protected override Boolean OnLoad()
+        protected override bool OnLoad()
         {
             this._plugin = (GoXLRPlugin)base.Plugin;
             return true;
@@ -43,7 +43,7 @@
             this.ActionImageChanged(actionParameter);
         }
         
-        protected override void RunCommand(String actionParameter)
+        protected override void RunCommand(string actionParameter)
         {
             if (!Routing.TryParseContext(actionParameter, out var routing))
                 return;
@@ -85,9 +85,9 @@
             return tree;
         }
         
-        protected override BitmapImage GetCommandImage(String actionParameter, PluginImageSize imageSize)
+        protected override BitmapImage GetCommandImage(string actionParameter, PluginImageSize imageSize)
         {
-            if (String.IsNullOrWhiteSpace(actionParameter))
+            if (string.IsNullOrWhiteSpace(actionParameter))
                 return null;
 
             if (!Routing.TryParseContext(actionParameter, out var routing))
@@ -106,7 +106,7 @@
             }
         }
 
-        protected override String GetCommandDisplayName(String actionParameter, PluginImageSize imageSize)
+        protected override string GetCommandDisplayName(string actionParameter, PluginImageSize imageSize)
         {
             //Does not work...
             if (actionParameter is null)
