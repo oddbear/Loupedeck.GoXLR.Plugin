@@ -6,10 +6,10 @@
 type: plugin4
 
 # Name that identifies the plugin.
-name: GoXLR
+name: GoXlr
 
 # Plugin name that is shown to the user.
-displayName: GoXLR Plugin
+displayName: GoXlr Plugin
 
 # Short description of the plugin.
 description: A plugin for the Official GoXLR App to control the device through the Plugin API.

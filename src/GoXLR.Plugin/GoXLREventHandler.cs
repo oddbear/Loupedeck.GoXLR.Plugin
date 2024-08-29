@@ -7,12 +7,12 @@
     using GoXLR.Server.Enums;
     using GoXLR.Server.Models;
 
-    public class GoXLREventHandler : IGoXLREventHandler
+    public class GoXlrEventHandler : IGoXLREventHandler
     {
-        private readonly GoXLRPlugin _plugin;
+        private readonly GoXlrPlugin _plugin;
         private readonly DynamicActionProvider _actionProvider;
 
-        public GoXLREventHandler(GoXLRPlugin plugin, DynamicActionProvider actionProvider)
+        public GoXlrEventHandler(GoXlrPlugin plugin, DynamicActionProvider actionProvider)
         {
             this._plugin = plugin;
             this._actionProvider = actionProvider;

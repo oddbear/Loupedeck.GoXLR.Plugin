@@ -1,7 +1,6 @@
 ﻿namespace Loupedeck.GoXLRPlugin.Commands
 {
     using System;
-    using System.Drawing;
     using System.Linq;
     using System.Threading;
 
@@ -11,7 +10,7 @@
 
     class SetProfileCommand : PluginDynamicCommand
     {
-        private GoXLRPlugin _plugin;
+        private GoXlrPlugin _plugin;
 
         private Profile[] _profiles = Array.Empty<Profile>();
         private Profile _selected = Profile.Empty;
@@ -27,7 +26,7 @@
 
         protected override bool OnLoad()
         {
-            this._plugin = (GoXLRPlugin)base.Plugin;
+            this._plugin = (GoXlrPlugin)base.Plugin;
             return true;
         }
 

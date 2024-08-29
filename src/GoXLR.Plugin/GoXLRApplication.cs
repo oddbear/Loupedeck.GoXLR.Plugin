@@ -1,10 +1,8 @@
 namespace Loupedeck.GoXLRPlugin
 {
-    using System;
-
-    public class GoXLRApplication : ClientApplication
+    public class GoXlrApplication : ClientApplication
     {
-        public GoXLRApplication()
+        public GoXlrApplication()
         {
 
         }

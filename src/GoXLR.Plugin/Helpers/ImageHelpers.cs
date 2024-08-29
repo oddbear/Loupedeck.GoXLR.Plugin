@@ -27,7 +27,7 @@
 
         public static byte[] GetProfileImage2(PluginImageSize imageSize, string profileName, bool isSelected)
         {
-            var checkedImage = BitmapImage.FromResource(typeof(GoXLRPlugin).Assembly,"Loupedeck.GoXLRPlugin.Resources.Commands.checked-80.png");
+            var checkedImage = BitmapImage.FromResource(typeof(GoXlrPlugin).Assembly,"Loupedeck.GoXLRPlugin.Resources.Commands.checked-80.png");
 
             var isLarge = imageSize == PluginImageSize.Width90;
 
@@ -64,7 +64,7 @@
 
         public static byte[] GetRoutingImage2(PluginImageSize imageSize, Routing routing, State? state)
         {
-            var checkedImage = BitmapImage.FromResource(typeof(GoXLRPlugin).Assembly, "Loupedeck.GoXLRPlugin.Resources.Commands.checked-80.png");
+            var checkedImage = BitmapImage.FromResource(typeof(GoXlrPlugin).Assembly, "Loupedeck.GoXLRPlugin.Resources.Commands.checked-80.png");
 
             var textInput = routing.Input.ToString();
             var textOutput = routing.Output.ToString();

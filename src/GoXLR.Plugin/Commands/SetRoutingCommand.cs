@@ -1,8 +1,6 @@
 ﻿namespace Loupedeck.GoXLRPlugin.Commands
 {
-    using System;
     using System.Collections.Generic;
-    using System.Drawing;
     using System.Linq;
     using System.Threading;
 
@@ -15,7 +13,7 @@
     {
         private readonly Dictionary<string, State> _states = new Dictionary<string, State>();
 
-        private GoXLRPlugin _plugin;
+        private GoXlrPlugin _plugin;
 
         public SetRoutingCommand() : base()
         {
@@ -28,7 +26,7 @@
 
         protected override bool OnLoad()
         {
-            this._plugin = (GoXLRPlugin)base.Plugin;
+            this._plugin = (GoXlrPlugin)base.Plugin;
             return true;
         }
 

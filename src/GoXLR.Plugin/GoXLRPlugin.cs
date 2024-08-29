@@ -12,7 +12,7 @@ namespace Loupedeck.GoXLRPlugin
 
     using StructureMap;
     
-    public class GoXLRPlugin : Plugin
+    public class GoXlrPlugin : Plugin
     {
         public override bool UsesApplicationApiOnly => true;
         public override bool HasNoApplication => true;
@@ -28,8 +28,8 @@ namespace Loupedeck.GoXLRPlugin
             
             this.Container = new Container(cfg =>
             {
-                cfg.For<GoXLRPlugin>().Use(this);
-                cfg.For<IGoXLREventHandler>().Use<GoXLREventHandler>().Singleton();
+                cfg.For<GoXlrPlugin>().Use(this);
+                cfg.For<IGoXLREventHandler>().Use<GoXlrEventHandler>().Singleton();
                 cfg.IncludeRegistry<GoXLRServerRegistry>();
             });
             

@@ -4,9 +4,9 @@
 
     public class DynamicActionProvider
     {
-        private readonly GoXLRPlugin _plugin;
+        private readonly GoXlrPlugin _plugin;
 
-        public DynamicActionProvider(GoXLRPlugin plugin)
+        public DynamicActionProvider(GoXlrPlugin plugin)
         {
             _plugin = plugin;
         }
